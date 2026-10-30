@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: notes-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/notes}
+    username: ${DB_USER:notes}
+    password: ${DB_PASSWORD:notes}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate   # Flyway owns the schema; Hibernate only checks it
+  flyway:
+    enabled: true
+  mvc:
+    problemdetails:
+      enabled: true        # standard JSON error responses (RFC 9457)
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
